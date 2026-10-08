@@ -1,0 +1,22 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Deploy: Render Dashboard → New → Blueprint → select this repo.
+services:
+  - type: web
+    name: mcp-mofa-overseas-safety
+    runtime: node
+    plan: free # upgrade to "starter" to avoid cold starts after idle periods
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: CACHE_TTL_SECONDS
+        value: "300"
+      - key: CACHE_MAX_ENTRIES
+        value: "20"
+      # Optional shared secret. If set, clients must send "Authorization: Bearer <token>"
+      # or append "?token=<token>" to the MCP URL. Leave empty for a public server.
+      - key: MCP_AUTH_TOKEN
+        sync: false
