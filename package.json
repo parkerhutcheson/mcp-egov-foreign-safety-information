@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "start": "node dist/index.js",
     "start:stdio": "node dist/index.js --stdio",
     "dev": "tsx watch src/index.ts",
@@ -33,15 +34,15 @@
   "homepage": "https://github.com/parkerhutcheson/mcp-egov-foreign-safety-information#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
     "express": "^5.2.1",
     "fast-xml-parser": "^5.11.2",
+    "typescript": "^7.0.2",
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^26.6.4",
-    "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "tsx": "^4.23.15"
   },
   "bin": {
     "mcp-mofa-overseas-safety": "dist/index.js"
